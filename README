@@ -5,7 +5,7 @@ Andrew Schwartz, 2015
 EXAMPLE
 require "./stdin_responder.rb"
 r = StdinResponder.new
-r.add_rule /sudo/ => "Okay.", default: "What? Make it yourself.", repeat: Float::INFINITY
+r.add_rule /sudo/ => "Okay.", /make me/i => "What? Make it yourself.", default: "I don't understand.", repeat: Float::INFINITY
 r.run("./sandwich")
 
 Expected result:
