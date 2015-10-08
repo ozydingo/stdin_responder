@@ -4,7 +4,7 @@
 # EXAMPLE
 # require "./stdin_responder.rb"
 # r = StdinResponder.new
-# r.add_rule /sudo/ => "Ok!", default: "No", repeat: Float::INFINITY
+# r.add_rule /sudo/ => "Okay.", default: "What? Make it yourself.", repeat: Float::INFINITY
 # r.run("./sandwich")
 #
 # RULES:

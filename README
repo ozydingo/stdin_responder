@@ -5,8 +5,15 @@ Andrew Schwartz, 2015
 EXAMPLE
 require "./stdin_responder.rb"
 r = StdinResponder.new
-r.add_rule /sudo/ => "Ok!", default: "No", repeat: Float::INFINITY
+r.add_rule /sudo/ => "Okay.", default: "What? Make it yourself.", repeat: Float::INFINITY
 r.run("./sandwich")
+
+Expected result:
+
+make me a sandwich. What? Make it yourself.
+Hmmm ...
+sudo make me a sandwich. Okay.
+
 
 RULES:
 Each rule is a Hash. Keys added to the Rule determine how the Rule
