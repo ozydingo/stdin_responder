@@ -14,6 +14,8 @@ make me a sandwich. What? Make it yourself.
 Hmmm ...
 sudo make me a sandwich. Okay.
 
+[creidt -- https://xkcd.com/149/]
+
 
 RULES:
 Each rule is a Hash. Keys added to the Rule determine how the Rule
