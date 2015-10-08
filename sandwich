@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo -n "make me a sandwich! (x): "
+read x
+echo "Hmmm ... "
+echo -n "sudo make me a sandwich! (y) "
+read y
+
+echo "Summary:"
+echo "For x, got '$x'"
+echo "For y, got '$y'"
