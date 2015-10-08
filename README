@@ -1,0 +1,38 @@
+StdinResponder
+Monitor stdout and/or stderr, and feed responses to stdin based on rules
+Andrew Schwartz, 2015
+
+EXAMPLE
+require "./stdin_responder.rb"
+r = StdinResponder.new
+r.add_rule /sudo/ => "Ok!", default: "No", repeat: Float::INFINITY
+r.run("./sandwich")
+
+RULES:
+Each rule is a Hash. Keys added to the Rule determine how the Rule
+behaves given a particular stdout buffer. Keys can be:
+Regexp: if stdout buffer matches the regexp, the value is used
+Proc / Lambda: till be called with the stdout buffer as an argument.
+if the Proc return a truthy value, the value is used
+String: If the stdout buffer's last non-empty line matches the 
+String exactly, the value is used
+
+The first key that results in a match will be the only key used.
+
+Each Rule also has two command symbols as keys, :default and :repeat
+:default gives the value to be used if no other keys match
+:repeat is the number of times to re-use this rule before discarding it
+
+A Rule value gets used depending on its type.
+String: puts the value to stdin
+Proc: call with the current stdout buffer as an arg. Results is
+puts'd to stdin
+Three command symbols may be used as values:
+:wait - put the rule back on the stack and wait
+:skip - discard the rule and immediately proceed to the next one
+:abort - terminate execution
+Any other value will be converted to a String and puts'd to stdin
+
+Other rule examples:
+r.add_rule /connecting/ => :wait, /access.*denied/i => :abort, /access.*granted/i => "echo 'hello, world'"
+r.add_rule /do you want to save/i => 'y', default: :skip
