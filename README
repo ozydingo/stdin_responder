@@ -1,5 +1,6 @@
 StdinResponder
 Monitor stdout and/or stderr, and feed responses to stdin based on rules
+Availble at https://rubygems.org/gems/stdin_responder
 Andrew Schwartz, 2015
 
 EXAMPLE
